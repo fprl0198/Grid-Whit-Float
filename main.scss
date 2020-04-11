@@ -1,0 +1,84 @@
+$grid-width: 114rem;
+$gutter-vertical: 6rem;
+$gutter-horizontal: 8rem;
+$color-grid: greenyellow;
+
+@mixin clearfix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html{
+    /* font-size: 10px; */
+    font-size: 62.5%;
+}
+
+body{
+    box-sizing: border-box;
+}
+
+.row{
+    max-width: $grid-width;
+    background-color: #eee;
+    margin: 0 auto;
+    font-size: 2rem;
+
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    //Se usa el selector de atributos
+    // [atributo=""]{aqui va los parametros}
+    // [atributo^=""] esto sirve para seleccionar los atributos que comiencen con...
+    // [atributo*=""] esto sirve para seleccionar los atributos que contengan ...
+    // [atributo$=""] esto sirve para seleccionar los atributos que acaben con ...
+    [class^="col-"]{
+        background-color: $color-grid;
+        float: left;
+        padding: 1rem;
+
+        // &:last-child    lo que hace es seleccionar al ultimo hijo
+        // &:not(:last-child) selecciona todo menos el ultimo
+        // con not lo que hacemos es hacer todo lo contrario
+        // seleccionamos todos menos last-child 
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2{
+        width: calc((100% - #{$gutter-horizontal})/2);
+    }
+
+    .col-1-of-3{
+        width: calc((100% - 2 * #{$gutter-horizontal})/3);
+    }
+
+    .col-2-of-3{
+        width: calc(((100% - 2 * #{$gutter-horizontal})/3)*2 + #{$gutter-horizontal});
+    }
+
+    .col-1-of-4{
+        width: calc((100% - 3 * #{$gutter-horizontal})/4);
+    }
+
+    .col-2-of-4{
+        width: calc(((100% - 3 * #{$gutter-horizontal})/4)*2 + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4{
+        width: calc(((100% - 3 * #{$gutter-horizontal})/4)*3 + (2 * #{$gutter-horizontal}));
+    }
+}
