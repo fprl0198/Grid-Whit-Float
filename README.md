@@ -1,6 +1,15 @@
 # Grid-Whit-Float
 Grid system using floats.
 
+#### If you want to work with SASS:
+Locate yourself in the project folder, then run the following commands.
+
+###### 1. Install dependencies
+npm install package.json
+
+###### 2. Run SASS
+npn run compile:sass
+
 #### With this project you will learn:
 
 ###### 1. how to use attribute selectors
